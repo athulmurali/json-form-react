@@ -6,7 +6,7 @@ import {
   IValidationState,
   IAsyncState,
   IErrorState,
-} from "./types";
+} from "./IStates";
 
 class StoreManager {
   private store: IUserStore;
@@ -18,7 +18,7 @@ class StoreManager {
   public updateFormValue(
     formName: string,
     fieldName: string,
-    newValue: IInputDataState["value"]
+    newValue: string
   ): void {
     const formState = this.getFormState(formName);
     const fieldState = this.getFieldState(formState, fieldName);

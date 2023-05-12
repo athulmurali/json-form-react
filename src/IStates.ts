@@ -17,7 +17,7 @@ export interface IValidationState {
 }
 
 export interface IInputDataState {
-  value: string | number | boolean | null | Array<any>;
+  value: string | boolean | null;
 }
 
 export interface IUserStore {
