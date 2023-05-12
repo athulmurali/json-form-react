@@ -1,6 +1,5 @@
 import { FormStore } from "./FormTest";
-import * as React from "react";
-import { IFormState } from "./IStates";
+import { IFieldState, IFormState } from "./IStates";
 class FormComponent {
   private formKey: string;
   private formStore: FormStore;
@@ -29,7 +28,7 @@ class FormComponent {
     }
   }
 
-  private renderField(fieldKey: string, field: Field) {
+  private renderField(fieldKey: string, field: IFieldState) {
     return `
       <div>
         <label>${fieldKey}</label>
@@ -42,7 +41,8 @@ class FormComponent {
     `;
   }
 
-  private renderForm(formKey: string, form: Form) {
+  // testing all as input fields
+  private renderForm(formKey: string, form: IFormState) {
     let fieldsHtml = "";
     for (const fieldKey in form.fields) {
       fieldsHtml += this.renderField(fieldKey, form.fields[fieldKey]);
@@ -79,5 +79,4 @@ class FormComponent {
 }
 
 const formStore = new FormStore();
-const rootFormComponent = new FormComponent("root", formStore);
-document.body.innerHTML = rootFormComponent.render();
+export const RootFormComponent = new FormComponent("root", formStore);
