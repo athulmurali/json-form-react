@@ -9,11 +9,9 @@ export type IFieldState = IInputDataState &
 
 export interface IValidationState {
   touched: boolean;
-  untouched: boolean;
   pristine: boolean;
   dirty: boolean;
   valid: boolean;
-  invalid: boolean;
 }
 
 export interface IInputDataState {

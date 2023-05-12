@@ -85,11 +85,9 @@ class StoreManager {
 
     return {
       touched: fieldState.touched,
-      untouched: fieldState.untouched,
       pristine: fieldState.pristine,
       dirty: fieldState.dirty,
       valid: fieldState.valid,
-      invalid: fieldState.invalid,
     };
   }
 
