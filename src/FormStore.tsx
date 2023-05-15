@@ -9,9 +9,20 @@ interface Action {
   type: string;
   payload: any;
 }
+const initialFormState: IFormState = {
+  firstName: {
+    value: '',
+    touched: false,
+    pristine: true,
+    dirty: false,
+    valid: false,
+    loading: false,
+    error : null
+  },
+};
 
 function rootReducer(
-  state: AppState = { forms: {} },
+  state: AppState = { forms: {personalDetails : initialFormState} },
   action: Action
 ): AppState {
   switch (action.type) {

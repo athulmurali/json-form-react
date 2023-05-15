@@ -124,3 +124,33 @@ class StoreManager {
 }
 
 export default StoreManager;
+
+
+// Field.isValid (){
+
+
+// }
+
+// FieldSet.isValid (){
+
+// on input_text1   off input_text_2
+
+
+// <FieldSet>
+// </FieldSet >
+
+// isValid 
+
+// if () 
+
+// {
+// <fieldSset>
+  
+// }
+// else if {
+// <FieldSet>
+
+// }
+
+// <FielSet>
+// }

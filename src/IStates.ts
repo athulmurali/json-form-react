@@ -5,7 +5,8 @@ export interface IFormState {
 export type IFieldState = IInputDataState &
   IValidationState &
   IErrorState &
-  IAsyncState;
+  IAsyncState 
+  // IMetaData
 
 export interface IValidationState {
   touched: boolean;
@@ -15,7 +16,7 @@ export interface IValidationState {
 }
 
 export interface IInputDataState {
-  value: string | boolean | null;
+  value: string ;
 }
 
 export interface IUserStore {
@@ -25,10 +26,25 @@ export interface IUserStore {
 }
 
 export interface IErrorState {
-  value: string | null;
+  error: string | null; // Will be replaced with the Error type used in maui 
 }
 
+/**
+ * Any other sync state can be added here 
+ */
 export interface IAsyncState {
   loading: boolean;
-  error: IErrorState;
+}
+
+/** 
+ * The following will be used while validating recursively 
+ * the validator function like getError, getTouched can make use of this 
+ * Sometimes, an error in an inactive field or ford should never be accounted
+ * Two main purposes :   
+ * 1. Info for view layer on run time changes 
+ * 2. Used by validation 
+ */
+export interface IMetaData{
+  hidden: boolean;
+  active : boolean;
 }
