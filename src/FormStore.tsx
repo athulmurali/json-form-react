@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { IFormState } from "./IStates";
+import { IFieldState, IFormState } from "./IStates";
 
 interface AppState {
-  forms: { [formKey: string]: IFormState };
+  forms: { [formKey: string]: IFormState | IFieldState };
 }
 
 interface Action {
@@ -19,6 +19,26 @@ const initialFormState: IFormState = {
     loading: false,
     error : null
   },
+  lastName: {
+    value: '',
+    touched: false,
+    pristine: true,
+    dirty: false,
+    valid: false,
+    loading: false,
+    error : null
+  },
+  form :{
+    lastName: {
+      value: '',
+      touched: false,
+      pristine: true,
+      dirty: false,
+      valid: false,
+      loading: false,
+      error : null
+    },
+  }
 };
 
 function rootReducer(

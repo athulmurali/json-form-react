@@ -1,5 +1,5 @@
 export interface IFormState {
-  [key: string]: IFieldState;
+  [key: string]: IFieldState | IFormState;
 }
 
 export type IFieldState = IInputDataState &
