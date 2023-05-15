@@ -11,6 +11,7 @@ interface Action {
 }
 const initialFormState: IFormState = {
   personalDetails :{
+
   firstName: {
     value: '',
     touched: false,
@@ -18,7 +19,9 @@ const initialFormState: IFormState = {
     dirty: false,
     valid: false,
     loading: false,
-    error : null
+    error : null,
+    hidden: false,
+    active : false
   },
   lastName: {
     value: '',
@@ -27,20 +30,11 @@ const initialFormState: IFormState = {
     dirty: false,
     valid: false,
     loading: false,
-    error : null
+    error : null,
+    hidden: false,
+    active : false
   },
-},
-  form :{
-    lastName: {
-      value: '',
-      touched: false,
-      pristine: true,
-      dirty: false,
-      valid: false,
-      loading: false,
-      error : null
-    },
-  }
+}
 };
 
 function rootReducer(

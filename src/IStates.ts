@@ -1,3 +1,5 @@
+import { FormStore } from "./FormStore";
+
 export interface IFormState {
   [key: string]: IFieldState | IFormState;
 }
@@ -6,7 +8,7 @@ export type IFieldState = IInputDataState &
   IValidationState &
   IErrorState &
   IAsyncState 
-  // IMetaData
+  // & IMetaData
 
 export interface IValidationState {
   touched: boolean;
@@ -16,7 +18,7 @@ export interface IValidationState {
 }
 
 export interface IInputDataState {
-  value: string ;
+  value?: string ;
 }
 
 export interface IUserStore {
@@ -47,4 +49,16 @@ export interface IAsyncState {
 export interface IMetaData{
   hidden: boolean;
   active : boolean;
+}
+
+
+
+/**
+ * Props for the FormComponent
+ */
+export interface FormComponentProps {
+  forms?: FormStore;
+  path: string[]; // Path to the current form or field
+  formName?: string; // Name of the current form
+  form: IFormState | IFieldState; // Current form or field state
 }
