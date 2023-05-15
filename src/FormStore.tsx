@@ -10,6 +10,7 @@ interface Action {
   payload: any;
 }
 const initialFormState: IFormState = {
+  personalDetails :{
   firstName: {
     value: '',
     touched: false,
@@ -28,6 +29,7 @@ const initialFormState: IFormState = {
     loading: false,
     error : null
   },
+},
   form :{
     lastName: {
       value: '',

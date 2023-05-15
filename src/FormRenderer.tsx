@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FormStore } from "./FormStore";
 import { IFieldState, IFormState } from "./IStates";
+import { time } from "console";
 
 interface Props {
   forms?: FormStore;
@@ -14,26 +15,28 @@ export function FormComponent(props: Props) {
 
   const handleFieldChange = (fieldName: string, value: any, fieldPath: string) => {
     const formCopy = { ...form };
-    formCopy[fieldName].touched = true;
-    formCopy[fieldName].value = value;
-    props.forms.updateForm(props.formName, formCopy);
-    setForm(formCopy);
+    // formCopy[fieldName].touched = true;
+    // formCopy[fieldName].value = value;
+    // props.forms.updateForm(props.formName, formCopy);
+    // setForm(formCopy);
     // Do something with the fieldPath
     console.log("Field Path:", fieldPath);
   };
 
   const renderField = (fieldKey: string, field: IFieldState | IFormState, fieldPath: string) => {
     const currentFieldPath = fieldPath ? `${fieldPath}.${fieldKey}` : fieldKey;
+    console.log("currentFieldPath ", currentFieldPath)
 
     let fieldValue;
     if ('value' in field) {
       fieldValue = field.value;
     return (
-      <div key={fieldKey}>
-        <label>{fieldKey}</label>
+      <div key={1000000* Math.random()}>
+        <label key={1000000* Math.random()}>{fieldKey}</label>
         <input
+          key={1000000* Math.random()}
           type="text"
-          value={fieldValue}
+          // value={fieldValue}
           onChange={(e) => handleFieldChange(fieldKey, e.target.value, currentFieldPath)}
         />
       </div>
@@ -41,7 +44,7 @@ export function FormComponent(props: Props) {
   }
   else{
     Array.from(Object.keys(field || {})).map(k=> console.log(k , field[k]))
-    return <fieldset>
+    return <fieldset key={1000000* Math.random()}>
         <legend>{fieldKey}</legend>
       {Object.keys(field || {}).map( k=> renderField(k , field[k], fieldPath)
       )}
@@ -54,8 +57,11 @@ export function FormComponent(props: Props) {
     const fieldsJSX = fieldKeys.map((k) => renderField(k, form[k], fieldPath));
     return (
       <div>
-        <h2>{formKey}</h2>
+        <h1 key={1000000* Math.random()} style={{textAlign: "center"}}>Test form</h1>
+         <fieldset key={1000000* Math.random()}>
+        <legend key={1000000* Math.random()}>{formKey}</legend>
         {fieldsJSX}
+        </fieldset>
       </div>
     );
   };
@@ -64,7 +70,7 @@ export function FormComponent(props: Props) {
     return null;
   }
 
-  return renderForm(props.formName || "", form);
+  return renderForm(props.formName || "", form, "");
 }
 
 const formStore = new FormStore();
