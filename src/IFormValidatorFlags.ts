@@ -1,7 +1,7 @@
 /**
- * Form class for managing form state and tracking changes.
+ * Field interface for managing validation  state and tracking changes.
  */
-export default interface IFormValidatorFlags {
+export default interface IFieldValidatorFlags {
   /**
    * Stores the current value of the form field.
    */

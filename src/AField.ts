@@ -59,7 +59,7 @@ export abstract class Field {
 
   /**
    * Sets an error for the field.
-   * @param message - The error message.
+   * @param message - The error message. 
    */
   setError(message: string): void {
     this.error = { message };

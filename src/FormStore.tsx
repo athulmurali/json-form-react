@@ -14,14 +14,8 @@ const initialFormState: IFormState = {
 
   firstName: {
     value: '',
-    touched: false,
-    pristine: true,
-    dirty: false,
-    valid: false,
-    loading: false,
-    error : null,
-    hidden: false,
-    active : false
+    error :null,
+    loading : false
   },
   lastName: {
     value: '',
@@ -31,8 +25,6 @@ const initialFormState: IFormState = {
     valid: false,
     loading: false,
     error : null,
-    hidden: false,
-    active : false
   },
 }
 };

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FormStore } from "./FormStore";
-import { FormComponentProps, IFieldState, IFormState } from "./IStates";
+import {  IFieldState, IFormState } from "./IStates";
+import { FormComponentProps } from "./RenderFormTypes";
 
 
 
@@ -19,19 +20,19 @@ export function FormComponent(props: FormComponentProps) {
    * @param value - New value of the field
    * @param fieldPath - Path to the field in the form
    */
-  const handleFieldChange = (fieldName: string, value: any, fieldPath: string[]) => {
+  const handleFieldChange = (_: string, value: any, fieldPath: string[]) => {
     const formCopy = { ...form };
     let currentField: { [x: string]: IFormState | IFieldState } = formCopy;
 
     // Traverse the field path to reach the target field
+  
     for (const path of fieldPath) {
       currentField = currentField[path] as { [x: string]: IFormState | IFieldState };
     }
-
     // Update the field value
     currentField.value = value;
 
-    // Update the form state
+    // Update the form state field  
     setForm(formCopy);
   };
 
@@ -46,11 +47,14 @@ export function FormComponent(props: FormComponentProps) {
    */
   const renderField = (fieldKey: string, field: IFieldState | IFormState, fieldPath: string[]) => {
     const currentFieldPath = [...fieldPath, fieldKey];
-    console.log("currentFieldPath ", currentFieldPath.join("."));
+    console.log("~ currentFieldPath ", currentFieldPath.join("."));
 
     let fieldValue;
-    if ( field ?. value) {
+    console.log("~ field being checked : ", field , field?.value)
+
+    if ( Object.keys(field).includes('value')) {
       fieldValue = field.value;
+      console.log("~ returning a field ")
       return (
         <div key={1000000 * Math.random()}>
           <label key={1000000 * Math.random()}>{fieldKey}</label>
@@ -58,7 +62,7 @@ export function FormComponent(props: FormComponentProps) {
             key={1000000 * Math.random()}
             type="text"
             // value={fieldValue}
-            onChange={(e) => handleFieldChange(fieldKey, e.target.value, currentFieldPath)}
+            // onChange={(e) => handleFieldChange(fieldKey, e.target.value, currentFieldPath)}
           />
         </div>
       );

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "v14.21.1"
+  },
   "dependencies": {
     "@vitejs/plugin-react": "2.0.1",
     "react": "18.2.0",
